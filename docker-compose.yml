@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_db_marketplace
+    ports:
+      - "5435:5432"
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: marketplace
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  pet-shelter-app:
+    image: vosmerkin/pet_shelter:latest
+    container_name: pet-shelter
+    ports:
+      - "8080:8080"          # host:container
+    restart: unless-stopped
+    # Optional: add environment variables if your app needs them
+    env_file: "docker.env"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - PGHOST=postgres
+      - PGPORT=5432
+      - PHOTO_PATH=/app/photo
+    volumes:
+      - /home/evgen/pet_shelter/photo:/app/photo
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge  
+
+
+volumes:
+  postgres_data:
+    driver: local
