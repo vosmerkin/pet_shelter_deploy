@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: postgres_db_marketplace
+    container_name: postgres_db_marketplace_prod
     ports:
       - "5435:5432"
     restart: unless-stopped
