@@ -4,13 +4,14 @@
 # 1. Define variables
 REMOTE_REPO="https://github.com/vosmerkin/pet_shelter_deploy"
 LOCAL_REPO="/home/$USER/pet_shelter_deploy"
+#echo $REMOTE_REPO
+#echo $LOCAL_REPO
 
 # 2. Navigate to the local repository
 # If the directory doesn't exist, we exit to prevent running commands in the wrong place
 cd "$LOCAL_REPO" || { echo "Error: Directory $LOCAL_REPO not found."; exit 1; }
 
 # 3. Update local knowledge of the remote
-cd ..
 git fetch origin
 
 # 4. Define comparison points
