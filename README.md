@@ -8,7 +8,7 @@ Deployment main phases
 
    
  
-1. Bash script for checking updates in master branch. If one is found - run pull script, run:
+1. Bash script for checking updates in master branch. If one is found - run pull script, and:
 	- test_and_build script;
 	- make Dockerfile;
 	- rerun docker-compose
