@@ -1,0 +1,2 @@
+1. put docker-build.yaml to .github/workflows/docker-build.yml
+2. Configure registry access (add secrets to Github for Docker registry access)
